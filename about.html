@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Center</title>
+    <style>
+        /* General styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f4f4f4;
+            padding-bottom: 50px;
+        }
+
+        header {
+            background: #2c3e50;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+
+        nav {
+            background: #34495e;
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 50px;
+            background: #fff;
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+
+        p {
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+
+        .gallery-container {
+            overflow: hidden;
+            width: 100%;
+            max-width: 1200px;
+            margin: auto;
+            position: relative;
+        }
+
+        .gallery {
+            display: flex;
+            gap: 20px;
+            width: calc(300px * 6);
+            animation: slide 10s linear infinite;
+        }
+
+        .gallery img {
+            width: 300px;
+            border-radius: 8px;
+        }
+
+        @keyframes slide {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        footer {
+            background: #2c3e50;
+            color: #fff;
+            text-align: center;
+            padding: 0px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .footer-content {
+            margin-bottom: 0px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to GETFIT</h1>
+        <p>Your fitness journey starts here!</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#infrastructure">Infrastructure</a></li>
+        </ul>
+    </nav>
+
+    <!-- About Us Section -->
+    <section id="about" class="section">
+        <h2>About Us</h2>
+        <p> GETFIT is dedicated to helping you achieve your fitness goals. With professional trainers, modern equipment, and personalized plans, we ensure every workout counts.</p>
+    <!-- Infrastructure Section -->
+    <section id="infrastructure" class="section">
+        <h2>Our Infrastructure</h2>
+        <div class="gallery-container">
+            <div class="gallery">             <img src="https://www.sphoorthyengg.ac.in/public/assets/infrastructure/gym/3.jpg" alt="Gym Equipment">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREoIhuAKUjY3EEJ_CKk0UcZeJ41LaVkPaIbQ&s" alt="Workout Area">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdsYeapWYaP45lj3qS-lM3hhC0WCdEcK4SZ_NRnFWe7Ge3lxT_O3wB4JgqsAplLSHNhsY&usqp=CAU alt="Cardio Section">
+            <img src="https://www.frontsigns.com/wp-content/uploads/2021/07/gym-wall-art-design.jpg" alt="reception area">
+            <img src="https://www.psprint.com/sites/default/files/special/opt-yoga-banner-1.jpg" alt="yoga sessions">
+            <img src="https://thumbs.dreamstime.com/b/gym-trainers-happy-arms-crossed-47297720.jpg" alt="trainers">
+            <img src="https://st3.depositphotos.com/1765561/14853/i/450/depositphotos_148533399-stock-photo-modern-gym-with-dumbbell-set.jpg" alt="acrobatics">
+
+
+
+            </div>
+        </div>
+    </section>
+
+  <!-- Footer -->
+    <footer>
+            <p>&copy; 2025 GETFIT Gym. All Rights Reserved</p>
+            <p>Contact us:Email✉: contact@getfitgym.com| Phone📞:+91 9876543210|Address:JNTUA college of engineering,pulivendula</p> 
+                 <!-- JavaScript -->
+    <script>
+        document.getElementById('toggleGallery').addEventListener('click', function() {
+            const gallery = document.querySelector('.gallery');
+            gallery.style.display = (gallery.style.display === 'none' || gallery.style.display === '') ? 'flex' : 'none';
+        });
+    </script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+.env
+pswd.txt
+bookings.php
+/vendor/
+/*.log

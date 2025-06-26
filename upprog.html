@@ -1,0 +1,34 @@
+<div class="containercomment">
+    <h2>Payment</h2>
+    <form method="post">
+        <button name="pay">Pay ₹500</button>
+    </form>
+</div>
+
+<div class="containercomment">
+    <h2>Payment History</h2>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Payment ID</th>
+                <th>Amount</th>
+                <th>Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (count($payments) > 0): ?>
+                <?php foreach ($payments as $payment): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($payment['payment_id']); ?></td>
+                        <td>₹<?php echo htmlspecialchars($payment['amount']); ?></td>
+                        <td><?php echo htmlspecialchars($payment['created_at']); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="3" class="text-center">No payments found.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
+</div>

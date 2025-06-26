@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Payment</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #111;
+            color: white;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #ff0000, #8b0000);
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0px 4px 10px rgba(255, 0, 0, 0.5);
+        }
+
+        /* Payment Container */
+        .payment-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 40px;
+        }
+
+        /* QR Code */
+        .qr-box {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+            width: 300px;
+            margin-bottom: 20px;
+        }
+
+        .qr-box img {
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        /* Pricing Table */
+        .pricing {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .plan {
+            background: #222;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(255, 0, 0, 0.5);
+            width: 250px;
+            transition: transform 0.3s ease;
+        }
+
+        .plan:hover {
+            transform: scale(1.05);
+        }
+
+        .plan h2 {
+            color: #ff0000;
+            font-size: 24px;
+        }
+
+        .plan p {
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .plan button {
+            background: #ff0000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .plan button:hover {
+            background: #8b0000;
+        }
+
+        /* Success Message */
+        #success-message {
+            display: none;
+            background: #00ff00;
+            color: black;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+
+        /* Booking Details */
+        #booking-details {
+            display: none;
+            background: #222;
+            color: #00ff00;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            font-size: 18px;
+        }
+
+        /* Footer */
+        footer {
+            background: #222;
+            padding: 20px;
+            font-size: 18px;
+            margin-top: 30px;
+            box-shadow: 0 -4px 10px rgba(255, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body>
+
+    <header>💪 Gym Payment - Secure & Easy 🏋</header>
+
+    <section class="payment-container">
+        <div class="qr-box">
+            <h2>Scan & Pay with PhonePe</h2>
+            <img src="phonepe.jpg" alt="PhonePe QR Code">
+        </div>
+
+        <div class="pricing">
+            <div class="plan">
+                <h2>1 Month</h2>
+                <p>💰 ₹2000</p>
+                <p>📅 Valid for 30 Days</p>
+                <button onclick="bookSession('1 Month', 2000)">Pay Now</button>
+            </div>
+
+            <div class="plan">
+                <h2>1 Week</h2>
+                <p>💰 ₹500</p>
+                <p>📅 Valid for 7 Days</p>
+                <button onclick="bookSession('1 Week', 500)">Pay Now</button>
+            </div>
+        </div>
+
+        <div id="success-message">✅ Payment Received Successfully! Thank You! 🏋</div>
+        <div id="booking-details"></div>
+    </section>
+
+    <footer>🏋 Stay Fit, Stay Strong! 💪</footer>
+
+    <script>
+        function bookSession(plan, amount) {
+            const email = prompt("Enter your email for confirmation:");
+            if (!email) {
+                alert("Email is required for booking confirmation.");
+                return;
+            }
+
+            // Simulate payment success
+            document.getElementById("success-message").style.display = "block";
+            setTimeout(() => {
+                document.getElementById("success-message").style.display = "none";
+            }, 3000);
+
+            // Display booking details
+            const bookingDetails = document.getElementById("booking-details");
+            bookingDetails.innerHTML = `
+                <strong>Booking Details:</strong><br>
+                Plan: ${plan}<br>
+                Amount: ₹${amount}<br>
+                Email: ${email}<br>
+                Date: ${new Date().toISOString().split('T')[0]}<br>
+            `;
+            bookingDetails.style.display = "block";
+
+            // Send booking data to the server
+            fetch('book_session.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    plan: plan,
+                    amount: amount,
+                    date: new Date().toISOString().split('T')[0] // Current date
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        }
+    </script>
+
+</body>
+</html>
